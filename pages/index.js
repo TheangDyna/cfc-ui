@@ -1,51 +1,48 @@
 import React, { useState, } from 'react';
 import {
-  Box, Button, Card, Divider, Typography,
+  Box,
+  Button,
+  Card,
+  Divider,
+  Stack,
+  Typography,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+
+//component
+import NewsFeedCard from '../components/organisms/cards/NewsFeedCard';
+
+//data
+import { newsFeeds } from '../utils/constant/information'
+
 const useStyles = makeStyles((theme) => ({
 
 }));
 
-const home = ({
-
-}) => {
+const home = () => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      {/* test theme */}
-      <Box sx={{ padding: '50px' }}>
-        <Card sx={{ maxWidth: 500, padding: '20px', }}>
-          <Box sx={{ paddingBottom: '20px'}}>
-            <Typography variant='title'>
-              Title
-            </Typography>
-          </Box>
-          <Divider />
-          <Typography variant='primary'>
-            Normal
-          </Typography>
-          <Typography variant='secondary'>
-            Secondary
-          </Typography>
-          <Typography variant='date'>
-            Date
-          </Typography>
-          <Button variant='contained'>
-            hello
-          </Button>
-          <Button variant='outlined'>
-            hello
-          </Button>
-        </Card>
-        <br />
-        <br />
-        <br />
-        <br />
-        <Card>
-          hello
-        </Card>
-      </Box>
+      <Stack
+        spacing={'20px'}
+        direction='column'
+      >
+        {
+          newsFeeds.map((item, index) => {
+            return (
+              <NewsFeedCard
+                key={index}
+                title={item.title}
+                images={item.images}
+                decription={item.decription}
+                date={item.date}
+                comments={item.comments}
+              />
+            )
+          })
+
+        }
+      </Stack>
     </Box>
   );
 }

@@ -1,135 +1,249 @@
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import {
     AppBar,
     Box,
-    Button,
-    Container,
-    CssBaseline,
     Divider,
     Drawer,
     IconButton,
     List,
     ListItem,
     ListItemIcon,
-    ListItemText,
-    Toolbar,
+    Stack,
+    Tooltip,
+    Typography,
+    useMediaQuery,
+    useTheme,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 // icon
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
+// data
+import { navItems } from '../../../utils/constant/navbar';
+
+// conponent
+import Profile from '../../organisms/profiles/ProfileMenu';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'fixed',
+        width: '100%',
+    },
+    appBar: {
+        width: '100%',
+        background: '#FFFFFF',
+        zIndex: theme.zIndex.drawer + 1,
+        height: 65,
+        boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+    },
+    container: {
+        width: '100%',
+        height: 65,
+    },
+    line: {
+        width: '100%',
+        height: 5,
+        background: '#FF9900'
+    },
+    toolbar: {
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        height: 60,
+    },
+    menuIcon: {
+        color: '#999999',
+    },
+    page: {
+        alignItems: 'center',
+        height: '60px',
+    },
+    link: { 
+        color: '#999999',
+    },
+    activeLink: {
+        color: '#FF9900',
+        backgroundColor: '#FFF5E6',
+    },
+    drawer: {
+        '& .MuiDrawer-paper': {
+            boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+            boxSizing: 'border-box',
+            width: '85%'
+        },
+    },
+    drawerList: {
+        padding: '15px 10px 0px 10px',
+    },
+    drawerLink: {
+        color: '#999999',
+        padding: 10,
+        marginBottom: 5,
+        borderRadius: 5,
+    },
+    activeDrawerLink: {
+        padding: 10,
+        color: '#FF9900',
+        backgroundColor: '#FFF5E6',
+        borderRadius: 5,
+        marginBottom: 5,
+    },
+    drawerIcon: {
+        minWidth: 0,
+        marginRight: '15px',
+    },
+    activeDrawerIcon: {
+        minWidth: 0,
+        marginRight: '15px',
+        color: '#FF9900',
+    },
+    activeDrawerText: {
+        color: '#FF9900',
     }
+
+
 }));
 
-//static data
-const pages = ['Products', 'Pricing', 'Blog'];
 
-const Navbar = ( props, {
-    children
+const Navbar = ({
+
 }) => {
     const classes = useStyles();
-    const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const router = useRouter();
+    const theme = useTheme();
+    const [mobileOpen, setMobileOpen] = useState(false);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    const container = window !== undefined ? () => window().document.body : undefined;
 
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
+    useEffect(() => {
+        if (matches) {
+            setMobileOpen(false)
+        }
+    })
     return (
         <Box className={classes.root}>
-            <CssBaseline />
             <AppBar
                 position='fixed'
-
+                className={classes.appBar}
             >
-                <Container maxWidth='xl'>
-                    <Toolbar>
+                <Box className={classes.container}>
+                    <Box className={classes.line} />
+                    {/* toolbar */}
+                    <Box
+                        className={classes.toolbar}
+                        sx={{ padding: { xs: '0 10px 0 5px', sm: '0 30px', md: '0 50px ' }, justifyContent: { xs: 'space-between' } }}
+                    >
+                        {/* Menu Button */}
                         <IconButton
-                            edge='start'
                             onClick={handleDrawerToggle}
-                            sx={{ mr: 2, display: { sm: 'none' } }}
+                            className={classes.menuIcon}
+                            sx={{ display: { sm: 'none' } }}
                         >
-                            <MenuIcon />
+                            {mobileOpen ? <ArrowBackIosRoundedIcon /> : <MenuRoundedIcon />}
                         </IconButton>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}>
-                            {pages.map((page) => (
-                                <Button
-                                    key={page}
-                                    // onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {page}
-                                </Button>
-                            ))}
+                        {/* Logo */}
+                        <Box    >
+                            <Typography variant='logo'>
+                                CFC Alumni
+                            </Typography>
                         </Box>
-                    </Toolbar>
-                </Container>
+                        <Divider orientation='vertical' sx={{ display: { xs: 'none', sm: 'flex' }, m: { sm: '0 30px', md: '0 50px' } }} />
+                        {/* Page Link */}
+                        <Box
+                            className={classes.page}
+                            sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                            <Stack direction='row' spacing={{ sm: '20px', md: '30px' }}>
+                                {navItems.map((item, index) => (
+                                    <Tooltip
+                                        key={index}
+                                        title={item.title}
+                                    >
+                                        <IconButton
+                                            onClick={() => {
+                                                router.push(item.path);
+                                            }}
+                                            className={
+                                                router.pathname === (item.path)
+                                                    ? classes.activeLink
+                                                    : classes.link
+                                            }
+
+                                        >
+                                            {item.icon}
+                                        </IconButton>
+                                    </Tooltip>
+                                ))}
+                            </Stack>
+                        </Box>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' } }} />
+                        {/* Profile */}
+                        <Profile />
+                    </Box>
+                </Box>
             </AppBar>
-            <Box
-                component="nav"
-                sx={{ width: '80%', flexShrink: { sm: 0 } }}
-                aria-label="mailbox folders"
-            >
-               
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            {/* drawer */}
+            <Box>
                 <Drawer
-                    container={container}
-                    variant="temporary"
+                    className={classes.drawer}
+                    sx={{ display: { xs: 'block', sm: 'none' } }}
+                    variant='temporary'
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{
                         keepMounted: true, // Better open performance on mobile.
                     }}
-                    sx={{
-                        display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: '80%' },
-                    }}
                 >
-                    <div>
-                        <Toolbar sx={{ background: 'red'}}/>
-                        <Divider />
-                        <List>
-                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <MenuIcon /> : <MenuIcon />}
+                    <Box height='65px' />
+                    <Box>
+                        <List
+                            className={classes.drawerList}
+                        >
+                            {navItems.map((item, index) => (
+                                <ListItem
+                                    button
+                                    key={index}
+                                    onClick={() => {
+                                        router.push(item.path);
+                                        setMobileOpen(false)
+                                    }}
+                                    className={
+                                        router.pathname === (item.path)
+                                            ? classes.activeDrawerLink
+                                            : classes.drawerLink
+                                    }
+                                >
+                                    <ListItemIcon
+                                        className={
+                                            router.pathname === (item.path)
+                                                ? classes.activeDrawerIcon
+                                                : classes.drawerIcon
+                                        }
+                                    >
+                                        {item.icon}
                                     </ListItemIcon>
-                                    <ListItemText primary={text} />
+                                    <Typography
+                                        className={
+                                            router.pathname === (item.path)
+                                                ? classes.activeDrawerText
+                                                : null
+                                        }
+                                    >
+                                        {item.title}
+                                    </Typography>
                                 </ListItem>
                             ))}
                         </List>
-                        <Divider />
-                        <List>
-                            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <MenuIcon /> : <MenuIcon />}
-                                    </ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItem>
-                            ))}
-                        </List>
-                    </div>
+                    </Box>
                 </Drawer>
             </Box>
-            {children}
         </Box>
     );
 }
-
-Navbar.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-};
 export default Navbar;
 
 Navbar.propTypes = {

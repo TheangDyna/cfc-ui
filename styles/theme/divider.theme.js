@@ -1,7 +1,8 @@
 const dividerTheme={
     styleOverrides:{
         root:{
-            width: '100%',  
+            width: 0.5,
+            border: 'none',
             background: '#CECECE',
         },
     },

@@ -1,28 +1,40 @@
 const buttonTheme = {
     styleOverrides: {
         root: {
-            color: '#FFFFFF',
             textTransform: 'none',
             borderRadius: 5,
             boxShadow: 'none',
-            padding: '10px 20px',
-            backgroundColor: '#FF9900',
+            padding: '5px 20px',
             '&:hover': {
-                boxShadow: '0px 0px 6px rgba(0, 0, 0, 0.25)',
+                boxShadow: 'none',
             },
         },
     },
     variants: [
         {
+            props: { variant: 'contained' },
+            style: {
+                color: '#FFFFFF',
+                background: '#FF9900',
+            }
+        },
+        {
             props: { variant: 'outlined' },
             style: {
+                color: '#FF9900',
                 border: '2px solid #FF9900',
-                padding: '8px 18px',
+                padding: '3px 18px',
                 '&:hover': {
                     border: '2px solid #FF9900',
                 }
             },
         },
+        {
+            props: { variant: 'text' },
+            style: {
+                color: '#FF9900',
+            }
+        }
     ],
 };
 

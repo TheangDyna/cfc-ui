@@ -2,7 +2,9 @@ import { createTheme } from '@mui/material';
 import typographyTheme from './Typography.theme';
 import buttonTheme from './Button.theme';
 import cardTheme from './Card.theme';
-import dividerTheme from './divider.theme';
+import dividerTheme from './Divider.theme';
+import iconButtonTheme from './IconButton.theme';
+import avatarTheme from './Avatar.theme';
 
 const theme = createTheme({
   palette: {
@@ -24,6 +26,8 @@ const theme = createTheme({
     MuiTypography: typographyTheme,
     MuiCard: cardTheme,
     MuiDivider: dividerTheme,
+    MuiIconButton: iconButtonTheme,
+    MuiAvatar: avatarTheme,
   }
 })
 export default theme;

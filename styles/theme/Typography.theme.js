@@ -4,9 +4,19 @@ const typographyTheme = {
             color: '#000000',
             fontSize: 16,
             display: 'inline',
+            fontFamily: 'roboto',
         },
     },
     variants: [
+        {
+            props: { variant: 'logo' },
+            style: {
+                fontSize: 20,
+                color: '#FF9900',
+                fontFamily: 'Lobster',
+                whiteSpace: 'nowrap'
+            },
+        },
         {
             props: { variant: 'secondary' },
             style: {

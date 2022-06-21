@@ -1,5 +1,7 @@
 // style
-import '../styles/globals.css'
+import '../styles/globals.css';
+import '../styles/ImageGrid.css';
+import '../styles/Modal.css';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../styles/theme';
 

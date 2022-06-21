@@ -73,9 +73,41 @@ const recommendImages = [
     'https://www.dropicts.com/wp-content/uploads/how-to-take-aesthetic-pictures-1024x683.jpg',
     'https://dvyvvujm9h0uq.cloudfront.net/com/articles/1594729150-alabaster-co-4p-6t9ee-om-unsplash.jpg',
     'https://dvyvvujm9h0uq.cloudfront.net/com/articles/1594729150-alabaster-co-4p-6t9ee-om-unsplash.jpg',
-]
+];
+
+const categories = [
+    {
+        title: 'All',
+        path: './categories/all.png'
+    },
+    {
+        title: 'Hot News',
+        path: './categories/news.png'
+    },
+    {
+        title: 'Events',
+        path: './categories/event.png'
+    },
+    {
+        title: 'Holidays',
+        path: './categories/holiday.png'
+    },
+    {
+        title: 'Scholaship',
+        path: './categories/scholaship.png'
+    },
+    {
+        title: 'Job',
+        path: './categories/job.png',
+    },
+    {
+        title: 'Tip',
+        path: './categories/tip.png'
+    },
+];
 
 export {
     newsFeeds,
     recommendImages,
+    categories,
 }

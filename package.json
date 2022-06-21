@@ -15,6 +15,7 @@
     "@mui/lab": "^5.0.0-alpha.63",
     "@mui/material": "^5.2.7",
     "@mui/styles": "^5.2.3",
+    "@yalamber/react-fb-image-grid": "^0.1.10",
     "date-fns": "^2.28.0",
     "next": "^12.1.0",
     "react": "^17.0.2",

@@ -1,25 +1,26 @@
 import React, { useState, } from 'react';
 import {
-  Box, Stack,
+  Box,
+
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 // component
 import SearchBox from '../components/molecules/Box/SearchBox';
 import PostNewsCard from '../components/organisms/cards/PostNewsCard';
-import StoryRecommendCard from '../components/organisms/cards/StoryRecommendCard';
-import CategoryBox from '../components/molecules/Box/CategoryBox';
+import CategoriesBox from '../components/organisms/Box/CategoriesBox';
 
 
 const useStyles = makeStyles((theme) => ({
-
+  root: {
+    width: '100%',
+  },
 }));
 
 const home = () => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-
       <br />
       <br />
       <br />
@@ -35,13 +36,8 @@ const home = () => {
       <br />
       <br />
       <br />
-      <Box sx={{ display: 'flex', flexWrap:'wrap',alignItem: 'center', justifyContent: 'center', background: 'red'}}>
-        <CategoryBox />
-        <CategoryBox />
-        <CategoryBox />
-        <CategoryBox />
-        <CategoryBox />
-        <CategoryBox />
+      <Box>
+        <CategoriesBox />
       </Box>
     </Box>
   );

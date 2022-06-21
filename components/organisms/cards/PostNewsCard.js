@@ -21,19 +21,39 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
     },
+    deleteButton: {
+        display: 'none',
+        '&:hover':{
+            display: 'block'
+        }
+    }
 }));
 
-const PostNewsCard = (props, {
+const PostNewsCard = ({
 
 }) => {
     const classes = useStyles();
-    const { window } = props;
-    const container = window !== undefined ? () => window().document.body : undefined;
-    const [viewImages, setViewImages] = useState(null);
-    const handleViewImages = (e) => {
-        const images = e.target.files[0];
-        setViewImages(images);
-    };
+    const [file, setFile] = useState([]);
+    const uploadSingleFile = (e) => {
+        let ImagesArray = Object.entries(e.target.files).map((e) =>
+            URL.createObjectURL(e[1])
+        );
+        console.log(ImagesArray);
+        setFile([...file, ...ImagesArray]);
+        console.log("file", file);
+    }
+
+    const upload = (e) => {
+        e.preventDefault();
+        console.log(file);
+    }
+
+    const deleteFile = (e) => {
+        const s = file.filter((item, index) => index !== e);
+        setFile(s);
+        console.log(s);
+    }
+
     return (
         <Box className={classes.root}>
             <Card className={classes.card}>
@@ -57,13 +77,20 @@ const PostNewsCard = (props, {
                                 multiline
                             />
                         </Box>
-                        <img
-                            src={container?.URL.createObjectURL(viewImages)}
-                            sx={{ width: '100px', height: '100px' }}
-                        />
-                        {
-                            viewImages ? console.log(window) : console.log('123')
-                        }
+                        <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', width: '100%' }}>
+                            {
+                                file.map((item, index) => {
+                                    return (
+                                        <Box key={index}>
+                                            < img src={item} width='100px' height='100px' style={{ margin: '20px', borderRadius: '5px' }} />
+                                            <Button onClick={() => deleteFile(index)} className={classes.deleteButton}>
+                                                delete
+                                            </Button>
+                                        </Box>
+                                    )
+                                })
+                            }
+                        </Box>
                         <Box
                             className={classes.action}
                             sx={{ p: { xs: '0 10px 20px 5px', sm: '0 20px 20px 15px' }, backgroun: 'gray', display: 'flex', alignItems: 'center' }}
@@ -74,19 +101,21 @@ const PostNewsCard = (props, {
                                         <PhotoCameraRoundedIcon />
                                     </IconButton>
                                 </Tooltip>
-                                <label htmlFor='icon-button-file'>
-                                    <Tooltip title='Select Photos'>
-                                        <IconButton>
-                                            <InsertPhotoRoundedIcon />
-                                        </IconButton>
-                                    </Tooltip>
-                                </label>
-                                <input
-                                    sx={{ display: 'none' }}
-                                    type='file'
-                                    id='icon-button-file'
-                                    accept='image/*'
-                                    onChange={handleViewImages} />
+                                <Tooltip title='Select Photos'>
+                                    <IconButton
+                                        component="label"
+                                    >
+                                        <input
+                                            onChange={uploadSingleFile}
+                                            type='file'
+                                            hidden
+                                            name='coverFileName'
+                                            accept='image/*'
+                                            multiple
+                                        />
+                                        <InsertPhotoRoundedIcon />
+                                    </IconButton>
+                                </Tooltip>
                             </Box>
 
                             <Box flexGrow={1} />
@@ -98,18 +127,10 @@ const PostNewsCard = (props, {
                         </Box>
                     </form>
                 </Box>
-            </Card>
-        </Box>
+            </Card >
+        </Box >
     );
 }
-
-PostNewsCard.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-};
 
 export default PostNewsCard;
 

@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
+
 // component
 import CommentBox from '../../molecules/Box/CommentBox';
 import ReactIcon from '../icon/ReactIcon';
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 0,
     },
     image: {
-        width: '100%',
+        // width: '100%',
         borderRadius: 5,
     },
     commentBox: {
@@ -72,9 +73,11 @@ const NewsFeedCard = ({
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} />
                 <Box>
-                    <IconButton>
-                        <BookmarkRoundedIcon/>
-                    </IconButton>
+                    <Tooltip title='Add to favorite'>
+                        <IconButton>
+                            <BookmarkRoundedIcon />
+                        </IconButton>
+                    </Tooltip>
                 </Box>
             </Box>
             <Divider orientation='vertical' sx={{ width: '100%', height: '0.5px' }} />
@@ -102,6 +105,7 @@ const NewsFeedCard = ({
                                         </ImageListItem>
                                     ))}
                                 </ImageList>
+
                             </Box>
                         </Box>
                         {/* decription section */}
@@ -144,7 +148,7 @@ const NewsFeedCard = ({
                         <Box sx={{ display: 'flex', flexGrow: 1 }} />
                         <Tooltip title='Close'>
                             <IconButton onClick={() => { setOpen(!open) }} onClose={() => { setOpen(!open) }}>
-                                <ExpandLessRoundedIcon/>
+                                <ExpandLessRoundedIcon />
                             </IconButton>
                         </Tooltip>
                     </Box>
@@ -183,7 +187,7 @@ const NewsFeedCard = ({
             </Collapse>
 
 
-        </Card>
+        </Card >
     );
 }
 

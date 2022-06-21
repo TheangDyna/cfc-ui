@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const information = () => {
+const news = () => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
@@ -17,4 +17,4 @@ const information = () => {
   );
 }
 
-export default information;
+export default news;

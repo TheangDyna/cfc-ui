@@ -13,7 +13,7 @@ import { makeStyles } from '@mui/styles';
 import NewsFeedCard from '../components/organisms/cards/NewsFeedCard';
 
 //data
-import { newsFeeds } from '../utils/constant/information'
+import { newsFeeds } from '../utils/constant/information';
 
 const useStyles = makeStyles((theme) => ({
 

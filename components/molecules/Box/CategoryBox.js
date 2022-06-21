@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         width: 'max-content',
         cursor: 'pointer',
-        margin: '5px 10px'
+        margin: '5px 10px',
     },
     image: {
         width: 40,
@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CategoryBox = ({
-
+    title,
+    path
 }) => {
     const classes = useStyles();
     return (
@@ -31,11 +32,11 @@ const CategoryBox = ({
         <Box className={classes.root}
             onClick={()=>{console.log('hello');}}
         >
-            <Tooltip title='All'>
-                <Card sx={{ p: {xs: '5px', sm: '10px'} }}>
+            <Tooltip title={title}>
+                <Card sx={{ p: {xs: '5px', sm: '10px'}, m: {xs: '10px', sm: '20px', md: '30px'} }}>
                     <img
                         className={classes.image}
-                        src='./categories/all.png'
+                        src={path}
                     />
                 </Card>
             </Tooltip>
@@ -46,7 +47,8 @@ const CategoryBox = ({
 export default CategoryBox;
 
 CategoryBox.propTypes = {
-
+    title: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
 };
 
 CategoryBox.defaultProps = {

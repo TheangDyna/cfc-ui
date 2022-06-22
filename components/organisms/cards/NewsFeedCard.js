@@ -6,8 +6,6 @@ import {
     Collapse,
     Divider,
     IconButton,
-    ImageList,
-    ImageListItem,
     Stack,
     Tooltip,
     Typography,
@@ -19,6 +17,7 @@ import { makeStyles } from '@mui/styles';
 import CommentBox from '../../molecules/Box/CommentBox';
 import ReactIcon from '../icon/ReactIcon';
 import CommentTextField from '../../molecules/textField/CommentTextFeild';
+import FbImageGrid from '@yalamber/react-fb-image-grid';
 
 // icon
 import BookmarkRoundedIcon from '@mui/icons-material/BookmarkRounded';
@@ -26,7 +25,7 @@ import ExpandLessRoundedIcon from '@mui/icons-material/ExpandLessRounded';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 600,
+        maxWidth: 500,
         width: '100%',
     },
     header: {
@@ -36,13 +35,6 @@ const useStyles = makeStyles((theme) => ({
     },
     imageBox: {
         width: '100%',
-    },
-    imageList: {
-        margin: 0,
-    },
-    image: {
-        // width: '100%',
-        borderRadius: 5,
     },
     commentBox: {
         width: '100%',
@@ -86,26 +78,12 @@ const NewsFeedCard = ({
                 images == '' ?
                     null :
                     <Box>
-                        <Box sx={{ p: { xs: '20px 5px 0 5px', sm: '20px 10px 0 10px' } }}>
+                        <Box sx={{ display: 'flex', p: { xs: '20px 5px 0px 5px', sm: '20px 10px 0px 10px' } }}>
                             <Box className={classes.imageBox}>
-                                <ImageList
-                                    variant='masonry'
-                                    cols={2}
-                                    gap={4}
-                                    className={classes.imageList}
-                                >
-                                    {images?.map((item, index) => (
-                                        <ImageListItem key={index}>
-                                            <img
-                                                className={classes.image}
-                                                src={`${item}?w=248&fit=crop&auto=format`}
-                                                srcSet={`${item}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                                loading='lazy'
-                                            />
-                                        </ImageListItem>
-                                    ))}
-                                </ImageList>
-
+                                <FbImageGrid
+                                    images={images}
+                                    hideOverlay={true}
+                                />
                             </Box>
                         </Box>
                         {/* decription section */}

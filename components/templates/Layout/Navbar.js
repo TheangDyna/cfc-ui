@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     appBar: {
         width: '100%',
         background: '#FFFFFF',
-        zIndex: theme.zIndex.drawer + 1,
+        zIndex: 1000,
         height: 65,
         boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
     },

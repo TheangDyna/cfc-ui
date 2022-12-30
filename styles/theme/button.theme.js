@@ -15,7 +15,7 @@ const buttonTheme = {
             props: { variant: 'contained' },
             style: {
                 color: '#FFFFFF',
-                background: '#FF9900',
+                background: 'secodary',
             }
         },
         {

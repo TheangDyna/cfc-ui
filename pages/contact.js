@@ -1,20 +1,11 @@
-import React, { useState, } from 'react';
-import {
-  Box,
+import React, { useState } from "react";
+import { Box } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+const UseStyles = makeStyles((theme) => ({}));
 
-} from '@mui/material';
-import { makeStyles } from '@mui/styles';
-const useStyles = makeStyles((theme) => ({
+const Contact = () => {
+  const classes = UseStyles();
+  return <Box className={classes.root}>Contact Page</Box>;
+};
 
-}));
-
-const contact = () => {
-  const classes = useStyles();
-  return (
-    <Box className={classes.root}>
-        Contact Page
-    </Box>
-  );
-}
-
-export default contact;
+export default Contact;

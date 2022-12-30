@@ -9,4 +9,5 @@ const unauthFetcher = async (url) => {
 
   return data;
 };
+
 export default unauthFetcher;

@@ -1,6 +1,6 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@mui/styles';
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ServerStyleSheets } from "@mui/styles";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -9,23 +9,22 @@ export default class MyDocument extends Document {
   }
   render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head>
           {/* PWA primary color */}
 
-          <meta name='theme-color' />
-          
-          <link
-            href='https://fonts.googleapis.com/css2?family=Khmer&display=swap'
-            rel='stylesheet'
-          />
-          <link
-            rel='stylesheet'
-            href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css'
-            integrity='sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p'
-            crossOrigin='anonymous'
-          />
+          <meta name="theme-color" />
 
+          <link
+            href="https://fonts.googleapis.com/css2?family=Khmer&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body>
           <Main />

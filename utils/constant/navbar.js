@@ -10,12 +10,12 @@ const navItems = [
   {
     icon: <HomeRoundedIcon />,
     title: 'Home',
-    path: '/home',
+    path: '/',
   },
   {
     icon: <VerticalSplitRoundedIcon />,
-    title: 'New Feed',
-    path: '/information',
+    title: 'News Feed',
+    path: '/news',
   },
   {
     icon: <EventNoteRoundedIcon />,

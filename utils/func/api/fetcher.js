@@ -4,13 +4,13 @@ const fetcher = async (url) => {
   const token = jsCookie.get("token_user");
   let data = {};
   if (token) {
-    const authorize = JSON.parse(token || "{}");
+    const authorize = JSON.parse(token);
     const res = await fetch(url, {
       headers: {
-        "x-access-token": authorize.accessToken,
+        "x-access-token": authorize,
       },
     });
-    data = res.json();
+    data = await res.json();
   }
   return data;
 };

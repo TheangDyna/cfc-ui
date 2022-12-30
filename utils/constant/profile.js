@@ -7,10 +7,6 @@ const profileMenu = [
         title: 'Profile',
         path: '/profile',
     },
-    {
-        title: 'Log Out',
-        path: '/',
-    }, 
 ];
 
 export {

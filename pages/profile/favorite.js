@@ -4,12 +4,12 @@ import {
 
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-const useStyles = makeStyles((theme) => ({
+const UseStyles = makeStyles((theme) => ({
 
 }));
 
-const favorite = () => {
-  const classes = useStyles();
+const Favorite = () => {
+  const classes = UseStyles();
   return (
     <Box className={classes.root}>
         Favorite Page
@@ -17,4 +17,4 @@ const favorite = () => {
   );
 }
 
-export default favorite;
+export default Favorite;

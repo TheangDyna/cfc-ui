@@ -181,7 +181,7 @@ const Profile = ({ user }) => {
             })}
           </Grid>
         </CollapseSection> */}
-          {Object.keys(data.contact).length > 0 && <DividerText label="Contact" />}
+          {/* {Object.keys(data.contact).length > 0 && <DividerText label="Contact" />} */}
           <Box
             className={classes.contactSection}
             sx={{ width: { xs: "100%", md: "350px" } }}>

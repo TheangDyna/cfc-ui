@@ -95,7 +95,7 @@ const EventDetail = ({ user, id }) => {
   useEffect(() => {
     if (data?.interesting && user?._id) {
       setInterested(
-        data.interesting.find((item) => item === user._id) === user._id
+        data.interesting.find((item) => item === user?._id) === user?._id
       );
     }
   }, [user?._id, data?.interesting]);

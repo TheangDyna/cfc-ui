@@ -61,7 +61,7 @@ const AnswerCommunityCard = ({ closeDialog, user, id }) => {
     const answer = values.answer;
 
     let body = {
-      createBy: user._id,
+      createBy: user?._id,
       answer,
     };
 

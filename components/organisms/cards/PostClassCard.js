@@ -92,7 +92,7 @@ const PostClassCard = ({ closeDialog, user, update }) => {
     const generation = values.generation;
 
     let body = {
-      createBy: user._id,
+      createBy: user?._id,
       category,
       title,
       coverName: key,

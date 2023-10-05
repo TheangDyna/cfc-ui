@@ -60,6 +60,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     height: 60,
+    background: "#FFFFFF",
+
   },
   menuIcon: {
     color: "#999999",

@@ -135,7 +135,7 @@ const Student = ({ user }) => {
         fullScreen={fullScreen}
         fullWidth={true}
         maxWidth="sm">
-        {user.role == "admin" ? (
+        {user?.role == "admin" ? (
           <PostClassCard closeDialog={setOpen} user={user} update={update} />
         ) : (
           <JoinClassCard closeDialog={setOpen} user={user} />

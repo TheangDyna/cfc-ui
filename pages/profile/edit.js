@@ -128,7 +128,7 @@ const Edit = ({ user }) => {
     setIsLoading(true);
     let key;
     if (file) {
-      key = await uploadProfile(`userProfile/${user._id}`, file);
+      key = await uploadProfile(`userProfile/${user?._id}`, file);
     }
     let body = {
       profile: key,

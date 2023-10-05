@@ -99,7 +99,7 @@ const PostEventCard = ({ closeDialog, user, update }) => {
     const description = values.description;
 
     let body = {
-      createBy: user._id,
+      createBy: user?._id,
       category,
       title,
       coverName: key,

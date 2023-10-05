@@ -110,7 +110,7 @@ const PostNewsCard = ({ user, update, setOpen }) => {
     const description = values.description;
     const category = select;
     let body = {
-      createBy: user._id,
+      createBy: user?._id,
       category,
       title,
       coverName: cover,

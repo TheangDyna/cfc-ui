@@ -115,7 +115,7 @@ const CommunityDetail = ({ user, id }) => {
             answer={data.answer.length}
             addVote={() => handleAddVote()}
             removeVote={() => handleRemoveVote()}
-            userId={user._id}
+            userId={user?._id}
           />
         )}
         <DividerText label={loading ? "" : "Answer"} />
@@ -137,7 +137,7 @@ const CommunityDetail = ({ user, id }) => {
                 vote={item.vote}
                 communityId={id}
                 id={item._id}
-                userId={user._id}
+                userId={user?._id}
               />
             );
           })

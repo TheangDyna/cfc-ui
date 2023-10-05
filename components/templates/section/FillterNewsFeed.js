@@ -29,7 +29,7 @@ const FillterNewsFeed = ({setOpen, setUpdate, user}) => {
         <SearchBox />
         <CategoriesBox />
         {
-          user && user.role == 'admin' && <Box display="flex">
+          user && user?.role == 'admin' && <Box display="flex">
           <Box flex={1} />
           <Button variant="contained" onClick={handleClick}>
             Post
